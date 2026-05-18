@@ -99,13 +99,25 @@ class AROSearcher:
 
     @staticmethod
     def _normalize_bm25(scores: dict[int, float]) -> dict[int, float]:
-        """Min-max normalize BM25 scores to [0,1] over the candidate set."""
+        """Min-max normalize BM25 scores to [0,1] over the candidate set.
+
+        Edge cases:
+          - Empty input: return {}.
+          - All scores zero (BM25 had no real lexical match): return {} so
+            these docs aren't spuriously promoted to score=1.0. The dense
+            retriever's results will dominate via cosine.
+          - All scores equal but nonzero (genuine tie): return all 1.0.
+        """
         if not scores:
             return {}
         values = np.array(list(scores.values()))
+        # No actual lexical match — BM25 returned default-zero scores.
+        # This happens for queries like "pikachu" or anything with no in-vocab terms.
+        if values.max() <= 1e-9:
+            return {}
         lo, hi = values.min(), values.max()
         if hi - lo < 1e-9:
-            return {k: 1.0 for k in scores}  # all tied — treat as max match
+            return {k: 1.0 for k in scores}  # genuine tie at a nonzero score
         return {k: float((v - lo) / (hi - lo)) for k, v in scores.items()}
 
     @staticmethod
