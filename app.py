@@ -84,7 +84,6 @@ with gr.Blocks(title="AROsearch", theme=gr.themes.Soft()) as demo:
     results_table = gr.Dataframe(
         label="Results",
         wrap=True,
-        max_height=600,
     )
 
     submit_btn.click(fn=run_search, inputs=[query_box, top_k_slider], outputs=results_table)
