@@ -18,8 +18,11 @@ numpy>=1.24.0,<2.0
 gradio==4.44.0
 
 # Starlette 1.0 changed TemplateResponse signature; Gradio 4.44 still uses the old API.
-# Pin <1.0 until we upgrade Gradio.
 starlette<1.0
+
+# Pydantic 2.11+ emits boolean values for some JSON schema fields, which crashes
+# gradio_client 1.3's schema parser. Pin to 2.10.x until we bump Gradio.
+pydantic>=2.10.0,<2.11
 
 # Python 3.13 removed the stdlib audioop module which pydub (Gradio dep) needs.
 audioop-lts<1.0; python_version >= "3.13"
