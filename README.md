@@ -1,3 +1,15 @@
+---
+title: AROsearch
+emoji: 🧬
+colorFrom: blue
+colorTo: indigo
+sdk: gradio
+sdk_version: 4.44.0
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # AROsearch
 
 Natural-language search over CARD's Antibiotic Resistance Ontology (ARO).
@@ -10,7 +22,7 @@ weighting so each query gets the right balance automatically.
 
 ## Try it
 
-**Live demo:** [HuggingFace Space link goes here once deployed]
+**Live demo:** https://huggingface.co/spaces/pranavathiyani/arosearch
 
 ## How to build / deploy
 
@@ -31,8 +43,8 @@ Unzip the artifacts into `data/`:
 ```
 data/
 ├── aro_index.faiss      (~26 MB — FAISS dense index)
-├── aro_bm25.pkl         (~5 MB — BM25S sparse index)
-└── aro_meta.parquet     (~2 MB — ARO metadata)
+├── aro_bm25.pkl         (~320 KB — BM25S sparse index)
+└── aro_meta.parquet     (~267 KB — ARO metadata)
 ```
 
 Then `git add data/ && git commit && git push`.
