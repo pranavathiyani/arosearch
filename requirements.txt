@@ -1,7 +1,7 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 
-# CPU-only torch (saves ~2GB of CUDA libraries we don't use)
-torch==2.4.1+cpu
+# CPU-only torch; 2.5.0 is the earliest with Python 3.13 wheels
+torch>=2.5.0,<2.13
 
 # Core retrieval stack
 sentence-transformers>=3.0.0,<6.0
@@ -14,5 +14,5 @@ pandas>=2.0.0,<3.0
 pyarrow>=15.0.0
 numpy>=1.24.0,<2.0
 
-# UI
-gradio>=4.44.0,<5.0
+# UI — pinned to match the sdk_version in README YAML frontmatter
+gradio==4.44.0
