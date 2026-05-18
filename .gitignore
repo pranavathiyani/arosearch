@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+.idea/
+.vscode/
+.ipynb_checkpoints/
+
+# Source data (large, regenerable via Colab notebook)
+data/card.json
+data/card.tar.bz2
+
+# But commit the built artifacts so HF Spaces can serve immediately
+!data/aro_index.faiss
+!data/aro_bm25.pkl
+!data/aro_meta.parquet

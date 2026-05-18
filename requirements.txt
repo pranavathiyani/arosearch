@@ -1,0 +1,18 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# CPU-only torch (saves ~2GB of CUDA libraries we don't use)
+torch==2.4.1+cpu
+
+# Core retrieval stack
+sentence-transformers>=3.0.0,<6.0
+transformers>=4.40.0,<5.0
+faiss-cpu>=1.8.0
+bm25s>=0.2.0
+
+# Data
+pandas>=2.0.0,<3.0
+pyarrow>=15.0.0
+numpy>=1.24.0,<2.0
+
+# UI
+gradio>=4.44.0,<5.0
