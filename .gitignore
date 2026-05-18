@@ -7,11 +7,12 @@ venv/
 .vscode/
 .ipynb_checkpoints/
 
-# Source data (large, regenerable via Colab notebook)
-data/card.json
-data/card.tar.bz2
+# Block everything in data/ by default — CARD raw files are NOT CC-BY
+# (only the ARO ontology is; the FASTAs, models, and JSON have academic-only terms)
+data/*
 
-# But commit the built artifacts so HF Spaces can serve immediately
+# But allow the three derived artifacts that ARE built from the CC-BY ontology
 !data/aro_index.faiss
 !data/aro_bm25.pkl
 !data/aro_meta.parquet
+!data/.gitkeep
