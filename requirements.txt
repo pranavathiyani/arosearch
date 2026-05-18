@@ -17,6 +17,9 @@ numpy>=1.24.0,<2.0
 # UI — pinned to match the sdk_version in README YAML frontmatter
 gradio==4.44.0
 
+# Starlette 1.0 changed TemplateResponse signature; Gradio 4.44 still uses the old API.
+# Pin <1.0 until we upgrade Gradio.
+starlette<1.0
+
 # Python 3.13 removed the stdlib audioop module which pydub (Gradio dep) needs.
-# audioop-lts is the official backport, recommended by Gradio's own requirements.
 audioop-lts<1.0; python_version >= "3.13"
